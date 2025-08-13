@@ -58,7 +58,12 @@ npm run build
 ```
 
 # 📜 Scripts
-Command 	Description
+```bash
+#Command 	#Description
+```
+---
+```bash
 npm run dev	Start app in development mode
 npm run build	Build production-ready app
 npm start	Run compiled app
+```
