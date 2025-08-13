@@ -1,0 +1,28 @@
+{
+  "name": "bingo-game",
+  "main": "dist/app/main/main.js",
+  "type": "module",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:main": "tsc -p tsconfig.json",
+    "build:renderer": "vite build",
+    "build": "npm run clean && npm run build:main && npm run build:renderer",
+    "dev:main": "tsc -w -p tsconfig.json",
+    "dev:renderer": "vite",
+    "electron": "wait-on tcp:5174 && wait-on dist/app/main/main.js && cross-env ELECTRON_DISABLE_SECURITY_WARNINGS=true electron . --session %SESSION_BUNDLE%",
+    "start": "concurrently -k \"npm:dev:renderer\" \"npm:dev:main\" \"npm:electron\"",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.yourdomain.bingo.game",
+    "productName": "Bingo Game",
+    "files": ["dist/**/*","resources/**/*","package.json"],
+    "directories": { "buildResources": "resources" },
+    "extraResources": [
+      { "from": "resources", "to": "resources", "filter": ["**/*"] }
+    ],
+    "win": { "target": "nsis" },
+    "mac": { "target": "dmg" }
+  }
+}

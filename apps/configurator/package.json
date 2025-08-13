@@ -1,8 +1,10 @@
 {
-  "name": "bingo-host-app",
+  "name": "bingo-configurator",
   "version": "1.0.0",
   "description": "",
   "main": "dist/app/main/main.js",
+  "workspaces": ["apps/configurator", "apps/game"],
+  "private": true,
   "scripts": {
     "clean": "rimraf dist",
     "build:main": "tsc -p tsconfig.json",
@@ -14,6 +16,14 @@
     "start": "concurrently -k \"npm:dev:renderer\" \"npm:dev:main\" \"npm:electron\"",
     "pack": "npm run build && electron-builder --dir",
     "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.yourdomain.bingo.configurator",
+    "productName": "Bingo Configurator",
+    "files": ["dist/**/*","assets/**/*","themes/**/*","package.json"],
+    "directories": { "buildResources": "assets" },
+    "win": { "target": "nsis" },
+    "mac": { "target": "dmg" }
   },
   "repository": {
     "type": "git",
@@ -45,20 +55,5 @@
     "@types/react-dom": "^19.1.7",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
-  },
-  "build": {
-    "appId": "com.yourdomain.bingo",
-    "productName": "Bingo Host",
-    "files": [
-      "dist/**/*",
-      "assets/**/*",
-      "themes/**/*",
-      "package.json"
-    ],
-    "directories": {
-      "buildResources": "assets"
-    },
-    "win": { "target": "nsis" },
-    "mac": { "target": "dmg" }
   }
 }
