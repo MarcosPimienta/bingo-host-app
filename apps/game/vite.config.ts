@@ -6,13 +6,15 @@ export default defineConfig({
   plugins: [react()],
   root: 'app/renderer',
   base: '',
-  server: { port: 5173, strictPort: true },
+  server: { port: 5174, strictPort: true },
   build: {
     outDir: '../../dist/renderer',
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        configurator: resolve(__dirname, 'app/renderer/entries/configurator.html')
+        main: resolve(__dirname, 'app/renderer/entries/main-display.html'),
+        host: resolve(__dirname, 'app/renderer/entries/host-controller.html'),
+        grid: resolve(__dirname, 'app/renderer/entries/numbers-grid.html')
       }
     }
   }

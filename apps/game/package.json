@@ -1,7 +1,29 @@
 {
   "name": "bingo-game",
+  "version": "0.1.0",
   "main": "dist/app/main/main.js",
-  "type": "module",
+  "type": "commonjs",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@bingo/shared": "0.0.1"
+  },
+  "devDependencies": {
+    "electron": "^31.3.0",
+    "electron-builder": "^24.13.3",
+    "typescript": "^5.6.3",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "vite": "^5.4.9",
+    "@vitejs/plugin-react": "^4.3.3",
+    "concurrently": "^9.0.1",
+    "wait-on": "^7.2.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^6.0.1",
+    "nodemon": "^3.1.4"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "build:main": "tsc -p tsconfig.json",
@@ -19,9 +41,7 @@
     "productName": "Bingo Game",
     "files": ["dist/**/*","resources/**/*","package.json"],
     "directories": { "buildResources": "resources" },
-    "extraResources": [
-      { "from": "resources", "to": "resources", "filter": ["**/*"] }
-    ],
+    "extraResources": [{ "from": "resources", "to": "resources", "filter": ["**/*"] }],
     "win": { "target": "nsis" },
     "mac": { "target": "dmg" }
   }

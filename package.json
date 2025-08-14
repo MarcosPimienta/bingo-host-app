@@ -1,0 +1,27 @@
+{
+  "name": "bingo-host-app",
+  "private": true,
+  "workspaces": [
+    "apps/configurator",
+    "apps/game",
+    "packages/shared"
+  ],
+  "scripts": {
+    "clean": "rimraf dist apps/**/dist",
+    "build": "npm run -w apps/configurator build && npm run -w apps/game build",
+    "dev:configurator": "npm -w apps/configurator run start",
+    "dev:game": "npm -w apps/game run start",
+    "dist:configurator": "npm -w apps/configurator run dist",
+    "dist:game": "npm -w apps/game run dist"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "concurrently": "^9.2.0",
+    "cross-env": "^10.0.0",
+    "nodemon": "^3.1.10",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "wait-on": "^8.0.4"
+  }
+}

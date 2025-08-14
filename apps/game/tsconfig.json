@@ -3,12 +3,12 @@
     "target": "ES2020",
     "module": "CommonJS",
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "./app",
     "strict": true,
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["app/main/**/*.ts", "app/preload/**/*.ts"],
+  "include": ["app/**/*.ts"],
   "exclude": ["node_modules", "dist", "app/renderer"]
 }
